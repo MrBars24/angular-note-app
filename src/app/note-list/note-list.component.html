@@ -1,0 +1,7 @@
+<ul class="nav bd-sidenav list-group">
+  <li *ngFor="let n of notes" (click)="viewNote(n)" class="list-group-item">
+    <a>
+      {{n.note}}
+    </a>
+  </li>
+</ul>
