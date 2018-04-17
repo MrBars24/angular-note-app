@@ -3,6 +3,8 @@ import { NoteService } from './../note.service';
 import { Component, OnInit } from '@angular/core';
 import { INote } from '../note';
 
+declare var $ : any;
+
 @Component({
   selector: 'app-note-list',
   templateUrl: './note-list.component.html',
@@ -22,6 +24,14 @@ export class NoteListComponent implements OnInit {
 
   viewNote(note){
     this._noteService.changeNote(note);
+  }
+
+  appendData(data){
+    this.notes.push(data);
+  }
+
+  openModal(){
+     $('#noteModal').modal();
   }
 
 }

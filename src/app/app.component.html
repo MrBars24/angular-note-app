@@ -15,3 +15,36 @@
     </main>
   </div>
 </div>
+
+<form class="modal fade" id="noteModal" tabindex="-1" role="dialog" [formGroup]="addForm" (submit)="saveNote()">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Note</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Title" formControlName="title">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <select class="form-control" formControlName="status">
+            <option value="open">Open</option>
+          </select>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" rows="10" formControlName="desc"></textarea>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</form>

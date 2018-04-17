@@ -1,4 +1,8 @@
-<p>
-  {{note.id}}
-</p>
-<h2>{{note.note}}</h2>
+<div class="container" *ngIf="note.id!=null">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Title" [(ngModel)]='note.note'>
+  </div>
+  <div class="form-group">
+      <textarea class="form-control" [(ngModel)]='note.des' rows="10"></textarea>
+  </div>
+</div>

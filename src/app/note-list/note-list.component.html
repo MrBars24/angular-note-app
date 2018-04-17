@@ -1,5 +1,6 @@
+<button class="btn btn-success btn-block mt-2 mb-2" (click)="openModal()">Add Note</button>
 <ul class="nav bd-sidenav list-group">
-  <li *ngFor="let n of notes" (click)="viewNote(n)" class="list-group-item">
+  <li *ngFor="let n of notes | orderBy:note:true" (click)="viewNote(n)" class="list-group-item">
     <a>
       {{n.note}}
     </a>
