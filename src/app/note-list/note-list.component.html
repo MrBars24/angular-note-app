@@ -1,8 +1,21 @@
-<button class="btn btn-success btn-block mt-2 mb-2" (click)="openModal()">Add Note</button>
-<ul class="nav bd-sidenav list-group">
-  <li *ngFor="let n of notes | orderBy:note:true" (click)="viewNote(n)" class="list-group-item">
-    <a>
-      {{n.note}}
-    </a>
-  </li>
-</ul>
+<div class="container-fluid">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+      <nav class="collapse bd-links" id="bd-docs-nav">
+        <div class="bd-toc-item">
+          <button class="btn btn-success btn-block mt-2 mb-2" (click)="openModal()">Add Note</button>
+          <ul class="nav bd-sidenav list-group">
+            <li *ngFor="let n of notes | orderBy:note:true" (click)="viewNote(n)" class="list-group-item">
+              <a>
+                {{n.note}}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
+      <app-note-detail [singleNote]="currentNote" (rnote)="removeNote($event)"></app-note-detail>
+    </main>
+  </div>
+</div>

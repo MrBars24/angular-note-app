@@ -1,20 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="#">Angular Note App</a>
 </nav>
-<div class="container-fluid">
-  <div class="row flex-xl-nowrap">
-    <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
-      <nav class="collapse bd-links" id="bd-docs-nav">
-        <div class="bd-toc-item">
-          <app-note-list></app-note-list>
-        </div>
-      </nav>
-    </div>
-    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
-      <app-note-detail></app-note-detail>
-    </main>
-  </div>
-</div>
+<app-note-list></app-note-list>
 
 <form class="modal fade" id="noteModal" tabindex="-1" role="dialog" [formGroup]="addForm" (submit)="saveNote()">
   <div class="modal-dialog" role="document">
@@ -32,7 +19,7 @@
         </div>
         <div class="form-group">
           <select class="form-control" formControlName="status">
-            <option value="open">Open</option>
+            <option *ngFor="let sts of stat" [value]="sts">{{sts}}</option>
           </select>
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>

@@ -9,6 +9,9 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class NoteService {
   public _url = 'http://localhost/note/';
   public _add = 'http://localhost/note/add.php';
+  public _update = 'http://localhost/note/update.php';
+  public _delete = 'http://localhost/note/delete.php';
+
   public n : INote = {
     id: null,
     note : '',
@@ -19,6 +22,11 @@ export class NoteService {
   };
   private temp = new BehaviorSubject<INote>(this.n);
   currentNote = this.temp.asObservable();
+  public status = [
+    'open',
+    'closed',
+    'resolved'
+  ];
 
   constructor(private http: HttpClient) { 
     
@@ -37,6 +45,20 @@ export class NoteService {
       'Content-Type': 'application/x-www-form-urlencoded'
     });
     return this.http.post(this._add,data,{headers:options});
+  }
+
+  updateNote(data) : Observable<INote>{
+    let options = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    return this.http.post<INote>(this._update,data,{headers:options});
+  }
+
+  deleteNote(data){
+    let options = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    return this.http.post(this._delete,data,{headers:options});
   }
 
 }

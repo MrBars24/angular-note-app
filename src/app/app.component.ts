@@ -13,10 +13,12 @@ export class AppComponent implements OnInit {
   @ViewChild(NoteListComponent) noteList:NoteListComponent;
   title = 'app';
   addForm: FormGroup;
+  stat : any;
 
   constructor(private _service: NoteService) { }
   
   ngOnInit(){
+    this.stat = this._service.status;
     this.createForm();
   }
 
